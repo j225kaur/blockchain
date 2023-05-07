@@ -46,5 +46,19 @@ class Blockchain(object):
         return nonce
     #checking if the hash block meets the difficulty target
     def valid_proof(self, index, hash_of_previous_block, transactions,nonce):
+        #create a string containing the hash of the previous block and block content 
+        content = f'{index}{hash_of_previous_block}{transactions}{nonce}'.encode()
+        #hash using sha256
+        content_hash = hashlib.sha256(content).hexdigest()
+        
+        #check if the hash meets the difficulty target
+        return content_hash[:len(self.difficulty_target)] == self.difficulty_target
+    
+    #creates a new block an adds it to the blockchain
+    def append_block(self, nonce, hash_of_previous_block):
+        block = {
+            'index' : len(self.chain),
+            'timestamp' : time(),
+            'transactions 
         
 
