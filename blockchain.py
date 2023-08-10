@@ -21,20 +21,20 @@ class Blockchain(object):
         # have inconsistent hashes
         block_encoded = json.dumps (block,sort_keys=True) .encode ()
         return hashlib.sha256(block_encoded).hexdigest()
-    def init (self):
-        self.nodes = set ()
-        # stores all the blocks in the entire blockchain
+    
+    class Blockchain(object):
+    difficulty_target = "0000"
+    
+    def __init__(self):  # This is the corrected init method
+        self.nodes = set()
         self.chain = []
-        # temporarily stores the transactions for the current
-        # block
         self.current_transactions = []
-        # create the genesis block with a specific fixed hash
-        # of previous block genesis block starts with index o
         genesis_hash = self.hash_block("genesis block")
         self.append_block(
-            hash_of_previous _block = genesis _hash,
-            nonce = self.proof _of work(O, genesis _hash, [])
+            hash_of_previous_block=genesis_hash,
+            nonce=self.proof_of_work(0, genesis_hash, [])
         )
+    
     
     # use Pow to find the nonce for the current block
     def proof_of_work(self, index, hash_of_previous _block, transactions):
