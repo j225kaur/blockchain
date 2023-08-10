@@ -35,7 +35,6 @@ class Blockchain(object):
             nonce=self.proof_of_work(0, genesis_hash, [])
         )
     
-    
     # use Pow to find the nonce for the current block
     def proof_of_work(self, index, hash_of_previous _block, transactions):
         # try with nonce = 0
